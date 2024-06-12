@@ -1,3 +1,4 @@
+import java.util.concurrent.ThreadLocalRandom;
 public class ProcessoSeletivo {
     public static void main(String[] args) {
         selecaoCandidatos();
@@ -15,19 +16,17 @@ public class ProcessoSeletivo {
             String candidato = candidatos[candidatosAtual]; 
             double salarioPretendido = valorPretendido();
 
-            System.out.println("O candidato" + candidato + " Solicitou este valor de salário " + salarioPretendido);
+            System.out.println("O candidato " + candidato + " Solicitou este valor de salário " + salarioPretendido);
             if (salarioBase >= salarioPretendido) {
                 System.out.println("O candidato" + candidato + "foi selecionado para a vaga");
                 candidatosSelecionados++;
             }
             candidatosAtual++;         
         }
-    }
-
-    private static double valorPretendido() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'valorPretendido'");
-    }
+    }        
+    static double valorPretendido() {
+     return ThreadLocalRandom.current().nextDouble(1800, 2200);
+}
     static void analisarCandidato(double salarioPretendido) {
         double salarioBase = 2000.0;
         if (salarioBase > salarioPretendido) {
